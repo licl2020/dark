@@ -1,0 +1,60 @@
+@charset "utf-8";
+html, body{ height:100%}
+body{font-size:14px;background-image:url("../images/beijing.jpg"); }
+.main-content{width:100%;height:100%;}
+.header{   
+	position: absolute;
+    width: 700px;
+    height: 94px;
+    background: url(./../images/logo.png) no-repeat;
+    left: 50%;
+    margin-left: -285px;
+    top: 25%;
+	margin-top: -40px;
+}
+.loginWraper{ position:absolute;width:100%; left:0; top:0; bottom:0; right:0; z-index:1; background:#3283AC url(../images/admin-login-bg.jpg) no-repeat center}
+.loginBox{     
+    position: absolute;
+    width: 750px;
+    height: 270px;
+    left: 50%;
+    top: 50%;
+    margin-left: -285px;
+    margin-top: -100px;
+    background-color: #F4F9FF;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+@media (max-width:617px) {
+	.loginbox{ width:100%; position:static; margin-top:0; margin-left:0;}
+}
+.loginBox .row{margin-top:20px;}
+.loginBox .input-text{ width:100%;height:26px;padding:5px;border:1px solid #a8d0ff;}
+@media (max-width:617px) {
+	.loginBox .input-text{ width:80%}
+}
+.pull-left{float: left;}
+.cl{*zoom: 1;}
+.form{    width: 320px;
+    margin-top: 43px;
+    margin-left: 32px;
+}
+.photo{width:380px;}
+.cl:after{content: ".";height: 0;clear: both;display: block;visibility: hidden;}
+.form-label{float:left;width:100px;color: #333333;text-align: right;margin-top:10px;}
+.formControls {float: left;width:200px;}
+.login{
+	border: none;
+	background-color: #3a63be;
+	color: #ffffff;font-size:16px;height:40px;
+	width:212px;height:40px;padding:5px;margin-left:100px;
+}
+.login:focus{outline:none;}
+.input-text:focus{outline:1px solid #a8d0ff;}
+.warn {
+       margin-top: 20px;
+    color: #4d4d4d;
+    font-size: 12px;
+    margin: 15px;
+    float: right;
+}

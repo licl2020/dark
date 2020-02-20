@@ -1,0 +1,118 @@
+html, body {
+    margin: 10px;
+    padding: 0px;
+}
+
+#container {
+    height: 600px;
+}
+
+.fml-map {
+    width: 449px;
+    position: absolute;
+    z-index: 1;
+}
+
+.ui-selecter-fml {
+    position: absolute;
+    top: 45px;
+    left: -1px;
+    right: -1px;
+    width: 449px;
+    height: 200px;
+    border: 1px solid #32A8EE;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(116, 185, 240, .5);
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 13px;
+    display: none;
+}
+
+.fml-build {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    padding-right: 40px;
+    padding-left: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.build-tap {
+    line-height: 96px;
+    color: #fff;
+    background: linear-gradient(-1deg, rgba(50, 167, 238, 1), rgba(50, 138, 238, 1));
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.27);
+    border-radius: 0 4px 4px 0;
+    width: 34px;
+    height: 98px;
+    right: 0;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+}
+.build-sanjiao{
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    position: absolute;
+    bottom: -20px;
+    left: 64px;
+}
+.fml-button-text{
+    cursor: pointer;
+    display: inline-block;
+    height: 38px;
+    padding: 0 15px;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 38px;
+    color: #32A6EE;
+    font-size: 13px;
+    border-radius: 4px 4px 0 0;
+}
+.fml-button-text.active{
+    background-color: #32A6EE;
+    color:#fff;
+}
+.fml-build-img{
+    margin:12px 22px;
+}
+.build-img{
+    width:349px;
+    height:135px;
+    background: url(../../../core/images/map/currentLive.png) center center no-repeat;
+    color:#fff;
+    font-size:18px;
+}
+.build-img.fl{
+    background: url(../../../core/images/map/total.png) center center no-repeat;
+
+}
+.fl-build i,
+.fr-build i{
+    font-size:50px;
+}
+.build-text{
+    margin-top:48px;
+    margin-left:27px;
+    width:250px;
+    height:50px;
+    position: relative;
+}
+.text-word{
+    position: absolute;
+    top:0;
+    left:0
+}
+.fl-build,
+.fr-build{
+    position: absolute;
+    left:133px;
+}

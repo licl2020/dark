@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datareport.dao.CommonPermssionMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap"
+		type="com.datareport.bean.CommonPermssion">
+		<id column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="TYPE" property="type" />
+		<result column="PARENT_ID" property="parentId" />
+		<result column="PARENT_IDS" property="parentIds" />
+		<result column="VISIT_URL" property="visitUrl" />
+		<result column="ICONCLS" property="iconcls" />
+		<result column="PERMISSION" property="permission" />
+		<result column="ORDER_NUM" property="orderNum" />
+		<result column="REMARK" property="remark" />
+		<result column="M_PARENTC" property="mParentc" />
+		<result column="ISDISTRIBUTION" property="isdistribution" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		ID, NAME, TYPE, PARENT_ID, PARENT_IDS, VISIT_URL, ICONCLS, PERMISSION,
+		ORDER_NUM, REMARK,M_PARENTC,ISDISTRIBUTION
+	</sql>
+
+
+
+
+
+	<!--查询所有，使用resultMap返回结果集，将数据组装成树形结构 -->
+	<select id="findMenuAll"
+		parameterType="com.datareport.bean.ModularDto"
+		resultType="com.datareport.bean.ModularDto">
+		SELECT
+		t.ID AS ID,
+		t.NAME AS NAME,
+		t.PARENT_ID AS pId,
+		t.ISDISTRIBUTION as isdistribution,
+		t.TYPE as mType,
+		t.PARENT_ID as parentId
+		FROM
+		(
+		SELECT
+		@id idlist,
+		NAME,
+		PARENT_ID,
+		ISDISTRIBUTION,
+		( SELECT @id := group_concat( ID SEPARATOR ',' ) FROM common_permssion
+		WHERE find_in_set( PARENT_ID, @id ) ) sub
+		FROM
+		common_permssion,
+		( SELECT @id := 0 ) vars
+		WHERE
+		@id IS NOT NULL
+		) tl,
+		common_permssion t
+		LEFT JOIN common_role_permssion t2 ON T2.RESOURCE_ID = t.ID
+		WHERE
+		T2.ROLE_ID = #{roleid,jdbcType=VARCHAR} and find_in_set(t.ID,tl.idlist)
+		ORDER BY t.TYPE,t.ORDER_NUM
+	</select>
+
+
+	<select id="mysqlchilds"
+		parameterType="com.datareport.bean.CommonPermssion"
+		resultMap="BaseResultMap">
+		SELECT
+		t.ID,
+		t.NAME,
+		t.PARENT_ID
+		FROM
+		(
+		SELECT
+		@id idlist,
+		NAME,
+		PARENT_ID,
+		( SELECT @id := group_concat( ID SEPARATOR ',' ) FROM common_permssion
+		WHERE find_in_set( PARENT_ID, @id ) ) sub
+		FROM
+		common_permssion,
+		( SELECT @id := #{id,jdbcType=VARCHAR} ) vars
+		WHERE
+		@id IS NOT NULL
+		) tl,
+		common_permssion t
+		WHERE
+		find_in_set(t.ID,tl.idlist)
+	</select>
+	<select id="selectAuthList" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		t1.*
+		FROM
+		common_permssion t1
+		LEFT JOIN common_role_permssion t2 ON t2.RESOURCE_ID = t1.ID
+		WHERE
+		t2.ROLE_ID = #{id,jdbcType=INTEGER}
+		AND t1.TYPE != 0
+		AND t1.TYPE !=3
+	</select>
+
+	<insert id="commonPermssionAdd"
+		parameterType="com.datareport.bean.CommonPermssion"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into common_permssion
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="type != null">
+				TYPE,
+			</if>
+			<if test="parentId != null">
+				PARENT_ID,
+			</if>
+			<if test="parentIds != null">
+				PARENT_IDS,
+			</if>
+			<if test="visitUrl != null">
+				VISIT_URL,
+			</if>
+			<if test="iconcls != null">
+				ICONCLS,
+			</if>
+			<if test="permission != null">
+				PERMISSION,
+			</if>
+			<if test="orderNum != null">
+				ORDER_NUM,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="mParentc != null">
+				M_PARENTC,
+			</if>
+			<if test="isdistribution != null">
+				ISDISTRIBUTION,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="parentIds != null">
+				#{parentIds,jdbcType=VARCHAR},
+			</if>
+			<if test="visitUrl != null">
+				#{visitUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="iconcls != null">
+				#{iconcls,jdbcType=VARCHAR},
+			</if>
+			<if test="permission != null">
+				#{permission,jdbcType=VARCHAR},
+			</if>
+			<if test="orderNum != null">
+				#{orderNum,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="mParentc != null">
+				#{mParentc,jdbcType=INTEGER},
+			</if>
+			<if test="isdistribution != null">
+				#{isdistribution,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+
+</mapper>

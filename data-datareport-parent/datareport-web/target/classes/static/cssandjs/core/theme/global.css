@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/**
+ * 	描述：标签重置样式
+**/
+html, body, form, th, td, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, input, textarea, button, select { margin:0; padding:0; }
+
+table { border-collapse:collapse; border-spacing:0; }
+
+h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:700; }
+
+ul, ol { list-style:none; }
+
+input, button { outline:none; }
+button{background:none;border:none}
+input, textarea, button, select { font-size:100%; }
+select{width:100%}
+textarea { resize:none; }
+
+img { border:0; vertical-align:middle; }
+
+a { cursor:pointer; text-decoration:none; }
+
+a:hover { text-decoration:none; }
+
+i, em { font-style:normal; }
+::-webkit-input-placeholder {
+    color: #c5c2c2 !important;
+  }
+  
+  :-moz-input-placeholder {
+    color: #c5c2c2 !important;
+  }
+  
+  :-ms-input-placeholder {
+    color: #c5c2c2 !important;
+  }
+  .fml-red{
+    color:red;
+  }
+  .fml-error{
+    font-size:12px;
+    /* margin-top:5px; */
+    display: none;
+    line-height: 1.2
+  }
+  .ui-datagrid-cell{
+  	text-align:center !important;
+  }

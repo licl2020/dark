@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*分页*/
+	#page-box{margin-top:20px;}
+		#page-box span>a{
+		display: inline-block;
+	    border-color: #337ab7;
+	    text-align: center;
+	    padding: 6px 12px;
+	    border-radius: 10px;
+	    color: #337ab7;
+	    cursor:pointer;
+	    text-decoration: none;
+	    background-color: #fff;
+	    border: 1px solid #ddd;
+		}
+		#page-box #newpage{width: 60px;    border-radius: 0!important;
+	    color: #858585;
+	    background-color: #FFF;
+	    border: 1px solid #D5D5D5;
+	    padding: 5px 4px 6px;
+	    font-size: 14px;
+	    font-family: inherit;
+	    -webkit-box-shadow: none!important;
+	    box-shadow: none!important;
+	    -webkit-transition-duration: .1s;
+	    transition-duration: .1s;}
+		#page-box .pageNum.cur{
+		background-color:#337ab7;
+		color: #fff;
+		}

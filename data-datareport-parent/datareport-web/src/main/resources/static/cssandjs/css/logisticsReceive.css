@@ -1,0 +1,12 @@
+.tip{color: #ff0000;}
+.btn-box{margin-bottom:10px;}
+.panel-default>.panel-header{color:#68B7E9;margin-left:14px;}
+.form-horizontal .form-label{padding-left:0;padding-right:0;min-width: 110px;white-space: nowrap;}
+.formControls{padding-left:0;white-space: nowrap;}
+.upload-url{width:auto;}
+.text-center{text-align: center}
+.investor-item{border-bottom:1px solid #d0d0d0;padding-bottom:10px;}
+.row.btn-box{margin-left:0;padding-left: 15px;}
+.card-container{position: relative;width: 100%;min-height: 100px;}
+.red-tip{color:red;font-size:20px;position: absolute;height:40px;top:50%;left:50%;margin-left:-30px;margin-top:-20px;}
+.martop-20{margin-top:20px}

@@ -1,0 +1,254 @@
+﻿#*********************************************
+* 该模板为分页控件
+*********************************************#
+
+##当前页
+#set($currentPage = $page.PageNum)
+
+##总页数
+#if($page.Total%$page.pageSize > 0)
+	#set($tPage = ($page.Total/$page.pageSize)+1)
+#else
+	#set($tPage = $page.Total/$page.pageSize)
+#end
+
+#set($tPage2 = $tPage)
+
+##上一页
+#set($prevPage = $currentPage - 1)
+##下一页
+#set($nextPage = $currentPage + 1)
+##首页
+#set($firstPage = 1)
+##末页
+#set($lastPage = $tPage)
+
+<div class="ui-pagination">
+	#if($page && $!page.Total > 0)
+		#if($currentPage <= 1)
+			<span class="page-first" title="首页">首页</span>
+			<span class="page-prev" title="上一页">上一页</span>
+		#else
+			<a class="page-first" href="#2" onclick="javascript:gotoPage($firstPage);return false;" title="首页">首页</a>
+			<a class="page-prev" href="#2" onclick="javascript:gotoPage($prevPage);return false;" title="上一页">上一页</a>
+		#end
+		
+	    #if($currentPage < $tPage || ($tPage2 > $tPage && $currentPage >= $tPage))
+	         <a class="page-next" href="#2" onclick="javascript:gotoPage($nextPage);return false;" title="下一页">下一页</a>
+	         <a class="page-last" href="#2" onclick="javascript:gotoPage($lastPage);return false;" title="末页">末页</a>
+	    #else
+	        <span class="page-next" title="下一页">下一页</span>
+	        <span class="page-last" title="末页">末页</span>
+	    #end
+	    
+		<input type="hidden" id="txtPageSize" name="page.PageSize" value="$!page.PageSize" />
+		<input type="hidden" id="total" name="page.Total" value="$!page.Total" />
+		
+		<span class="page-skip">
+			<label class="pr10">$currentPage / $tPage 页</label>
+	   	 	<label>到第</label>
+	   	 	<input type="text" name="page.PageNum" id="page.PageNum" class="inp" size="2" maxLength="8" value="$!page.PageNum" style="ime-mode:disabled;" onkeydown="javascript:return allowNumKeys(event);" onpaste="javascript:return false;" />
+	   	 	<label>页</label>
+	    	<input type="button" class="button" onclick="javascript:gotoPage();" value="确定" />
+		</span>
+		
+		<div class="page-show">
+			<label>每页显示：</label>
+			<div id="pageSelect" class="page-show-list">
+				<div class="page-show-num"><span>$!page.PageSize</span><i></i></div>
+				<ul>
+					<li><a href="#2" title="30">30</a></li>
+					<li><a href="#2" title="50">50</a></li>
+					<li><a href="#2" title="100">100</a></li>
+					<li><a href="#2" title="200">200</a></li>
+					<li><a href="#2" title="300">300</a></li>
+				</ul>
+			</div>
+		</div>		
+	#else
+		<span class="page-none" id="pageNone" title="没有找到相关记录">没有找到相关记录</span>
+		<input type="hidden" name="page.PageNum" id="page.PageNum" size="2" value="$!page.PageNum" />
+	#end
+</div>
+
+<!-- //javascript -->
+<script type="text/javascript">
+	
+	//每页显示多少条数据
+	function pageSelect(){
+	
+		var pageSelect = document.getElementById('pageSelect');
+		
+		if(!pageSelect){
+		
+			return false;
+		
+		}; 
+			
+		var	tagDiv = pageSelect.getElementsByTagName('div')[0],
+			
+			tagSPan = pageSelect.getElementsByTagName('span')[0],
+			
+			tagUl = pageSelect.getElementsByTagName('ul')[0];
+		
+		tagDiv.onclick = function(){ 
+		
+			tagUl.style.display = 'block';
+
+		};
+		
+		for(var i = 0; i < tagUl.childNodes.length; i++){
+			
+			(function(k){
+				
+				tagUl.childNodes[k].onclick = function(){
+				
+					var showNum = this.innerText;
+					
+					tagSPan.innerText = showNum;
+					
+					tagUl.style.display = 'none';
+					
+					document.getElementById('txtPageSize').value = showNum;
+					
+					var currentPage = '$!page.PageNum';
+			
+					gotoPage(currentPage);
+				
+				};
+				
+			})(i);
+			
+		};
+		
+		pageSelect.onmouseover = function(){
+			
+			tagDiv.className = 'page-show-num current';
+			
+			tagUl.className = 'current';
+			
+		};
+		
+		pageSelect.onmouseleave = function(){
+			
+			tagDiv.className = 'page-show-num';
+			
+			tagUl.className = '';
+			
+			tagUl.style.display = 'none';
+			
+		};
+		
+		document.body.style.paddingBottom = '120px';
+		
+	};
+	
+	var pageNone = document.getElementById('pageNone');
+		
+	if(!pageNone){
+	
+		pageSelect();
+	
+	};	
+
+	// 只允许输入数字
+	function allowNumKeys(e){
+		var target = e.srcElement || e.target;
+		
+		var json = getPageSelection(target);
+		
+		// 不屏蔽数字键、退格键、删除键、上下左右键
+		var key = e.keyCode, keys = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 13, 46, 37, 38, 39, 40];
+		
+		// 判断按下的按键是否在不屏蔽范围内，且不含shift键
+		if(inArray(key, keys) == -1 || e.shiftKey || ((key == 48 || key == 96) && json.start == 0)){
+			return false;
+		}
+	};
+	
+	// 跳转
+	function jumpPage(num, url, data, callback){
+	
+		var cPage = document.getElementById('page.PageNum');
+		var tPageSize = document.getElementById('txtPageSize');
+		
+    	if(num){
+    		cPage.value = num;
+    	}
+    	
+		if(data != null){
+			data['page.PageNum'] = cPage.value;
+			(tPageSize) && (data['page.PageSize'] = tPageSize.value);
+		}
+		
+		if(url == null || url == ''){
+			url = '$request.getRequestURL()';
+		}
+		
+		if(data){
+			//data = data;
+		}else{
+			data = getPostJson();
+		}
+		
+		jQuery.post(url, data, callback);
+		
+	};
+	
+	/***************************************
+	** 得到文本光标的位置 
+	***************************************/
+	this.getPageSelection = function(obj){
+		
+		var start, end, range, storedRange;
+		
+		if(obj.selectionStart == undefined){
+			
+			var selection = document.selection;
+			
+			if(obj.tagName.toLowerCase != 'textarea'){
+				
+				var val = jQuery(obj).val();
+				
+				range = selection.createRange().duplicate();
+				
+				range.moveEnd('character', val.length);
+				
+				start = (range.text == '' ? val.length : val.lastIndexOf(range.text));
+				
+				range = selection.createRange().duplicate();
+				
+				range.moveStart('character', -val.length);
+				
+				end = range.text.length;
+				
+			}else{
+				
+				range = selection.createRange(),
+		                
+		        storedRange = range.duplicate();
+		        
+		        storedRange.moveToElementText(this[0]);
+		        
+		        storedRange.setEndPoint('EndToEnd', range);
+		        
+		        start = storedRange.text.length - range.text.length;
+		        
+		        end = start + range.text.length;
+				
+			}
+			
+		}else{
+			
+			start = obj.selectionStart,
+	        
+	        end = obj.selectionEnd;
+			
+		}
+		
+		var selected = obj.value.substring(start, end);
+		
+	    return { start: start, end: end, text: selected };
+		
+	};
+</script>

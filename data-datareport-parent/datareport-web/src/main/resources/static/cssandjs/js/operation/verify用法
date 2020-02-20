@@ -1,0 +1,12 @@
+        verify_arr = new Array;
+    	
+    	$('#form').find(".verify").each(function(){
+    		verify_arr.push($(this).attr("name"));
+    	});
+    	verify_return = true;	
+    	eval("verify_return = verify($('#form')).submitform('"+verify_arr.join("','")+"');");
+    	if(verify_return){
+    	     //验证通过的
+    	}else{
+    		return verify_return;
+    	}

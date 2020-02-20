@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>修改角色</title>
+    <link type="text/css" rel="stylesheet" href="../../../core/theme/global.css" />
+    <link type="text/css" rel="stylesheet" href="../../../core/theme/default/ui.css" />
+</head>
+
+<body>
+    <div class="ui-forms mb80">
+        <div class="ui-forms-bodr">
+            <form id="form">
+                <table class="ui-form">
+                    <tbody>
+                        <tr class="ui-form-row">
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>权限名称</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <div class="ui-text ui-text-lg">
+                                    <input type="text" class="ui-text-text" maxlength="20" name="code" id="perName"
+                                        autocomplete="off" placeholder="角色名称" id="roleName" />
+                                </div>
+                            </td>
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>功能类型</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <select placeholder="功能类型" autocomplete="off" name="gnClass" class="ui-text-lg" name="province">
+                                    <option>页面</option>
+                                    <option>菜单</option>
+                                    <option>按钮</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="ui-form-row">
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>是否可分配</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <select placeholder="是否可分配" autocomplete="off" id="fpIf" class="ui-text-lg" name="province">
+                                    <option>可分配</option>
+                                    <option>不可分配</option>
+                                </select>
+                            </td>
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>上级菜单</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <div class="ui-text ui-text-lg">
+                                    <input type="text" class="ui-text-text" id="perTree" autocomplete="off" placeholder="上级菜单" />
+                                    <input type="hidden" name="readyPer" placeholder="回传的值" id="readyPer" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ui-form-row">
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>控制器</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <div class="ui-text ui-text-lg">
+                                    <input type="text" class="ui-text-text" maxlength="50" name="code" id="control"
+                                        autocomplete="off" placeholder="角色名称" id="roleName" />
+                                </div>
+                            </td>
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>方法</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <div class="ui-text ui-text-lg">
+                                    <input type="text" class="ui-text-text" maxlength="50" name="code" id="way"
+                                        autocomplete="off" placeholder="角色名称" id="roleName" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ui-form-row">
+                            <td class="ui-form-label" width="5%">
+                                <label><span class="fml-red">*</span>排序</label>
+                            </td>
+                            <td class="ui-form-control" width="45%">
+                                <div class="ui-text ui-text-lg">
+                                    <input type="text" class="ui-text-text" maxlength="20" name="code" id="sort"
+                                        autocomplete="off" placeholder="角色名称" id="roleName" />
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr class="ui-form-row">
+                            <td class="ui-form-label" width="5%">
+                                <label>参数</label>
+                            </td>
+                            <td class="ui-form-control" colspan="3">
+                                <div class="ui-textarea">
+                                    <textarea type="text" maxlength="500" class="ui-textarea-text" style="height:100px"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+    <div class="dialog-foot">
+        <p class="ui-button-center">
+            <a id="btnClose" class="ui-button ui-button-border-info ui-button-lg">
+                <em class="ui-button-text">关闭</em>
+            </a>
+            <a id="btnSave" class="ui-button ui-button-secondary ui-button-lg">
+                <em class="ui-button-text">保存</em>
+            </a>
+        </p>
+    </div>
+    <script type="text/javascript" src="../../../core/js/third/jQuery/jQuery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/core.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/driver.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/components/jQuery.form.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/components/jQuery.dialog.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/components/jQuery.treeSelecter.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/components/jQuery.selecter.js"></script>
+    <script type="text/javascript" src="../../../core/js/libs/components/jQuery.validator.js"></script>
+    <script type="text/javascript">
+        var loadUi = {
+            initialize: function () {
+                this.btnClose = $('#btnClose');
+                this.btnSave = $('#btnSave');
+                this.perTree = $('#perTree');
+                this.ANIMATE_TIME = 5000;
+                this.initEvent();
+            },
+            initEvent: function () {
+                this.btnClose.on('click', $.proxy(this.btnCloseClick, this));
+                this.btnSave.on('click', $.proxy(this.btnSaveClick, this));
+                this.perTree.treeSelecter(this.perOption);
+                $('#perTree,#gnClass,#fpIf,#perName').verify('required');
+                $('#sort').verify('required number');
+                $('#control,#way').verify('letterNumber')
+            },
+            btnCloseClick: function () {
+                var dialog = jQuery.getDialog('perDialog');
+                dialog.close();
+            },
+            btnSaveClick: function () {
+                var flag = $.verify('#form');
+                if (!flag) return
+                var Json = getFormJson("#form");
+                this.closeDialog(true, 'perDialog', '操作成功')
+            },
+            closeDialog: function (ref, dialogID, o) {
+                var dialog = jQuery.getDialog(dialogID);
+                var win = tabs.getIframeWindow(dialog.config.tabId);
+                if (ref && win && win.window.loadUi) {
+                    win.window.loadUi.gridRefresh(o)
+                }
+                if (dialog) {
+                    dialog.close();
+                }
+            },
+            perOption: {
+                treeId: 'permissionTree',
+                nodes: [
+                    { id: 1, pId: 0, name: '1333', open: true },
+                    { id: 11, pId: 1, name: '11' },
+                    { id: 12, pId: 1, name: '12' },
+                    { id: 2, pId: 0, name: '2', open: true },
+                    { id: 21, pId: 2, name: '21' },
+                    { id: 23, pId: 21, name: '211' },
+                    { id: 22, pId: 2, name: '22' }
+                ],
+                onClick: function (e, treeId, node, flag) {
+                    $('#perTree').val(node.name).focus();
+                    $('#readyPer').val(node.id)
+                }
+            },
+        };
+        $(function () {
+            $('select').selecter()
+            loadUi.initialize()
+        });
+    </script>
+</body>
+
+</html>

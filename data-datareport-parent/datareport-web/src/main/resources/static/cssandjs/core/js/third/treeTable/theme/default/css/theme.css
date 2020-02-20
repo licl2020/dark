@@ -1,0 +1,255 @@
+
+@charset "UTF-8";
+.default-tt-node-clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.default-tt-node-clearfix {
+    display: inline-block;
+}
+* html .default-tt-node-clearfix {
+    height: 1%;
+}
+.default-tt-node-clearfix {
+    display: block;
+}
+.default-tt-node-margin {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+}
+.default-tt-node-margin-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+}
+.default-tt-node-margin-empty {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-empty-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-line {
+    background: url("../img/line.gif") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-line-no {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-line-fr {
+    background: url("../img/line.gif") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-margin-line-no-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-margin-joinbottom {
+    background: url("../img/joinbottom.gif") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-joinbottom-no {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-joinbottom-fr {
+    background: url("../img/joinbottom.gif") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-margin-joinbottom-no-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-margin-join {
+    background: url("../img/join.gif") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-join-no {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-margin-join-fr {
+    background: url("../img/join.gif") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-margin-join-no-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 18px;
+}
+.default-tt-node-click {
+    background: none no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-click-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: right;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-click-last-open {
+    background-image: url("../img/minusbottom.gif");
+}
+.default-tt-node-click-last-close {
+    background-image: url("../img/plusbottom.gif");
+}
+.default-tt-node-click-open {
+    background-image: url("../img/minus.gif");
+}
+.default-tt-node-click-close {
+    background-image: url("../img/plus.gif");
+}
+.default-tt-node-click-last-open-no {
+    background-image: url("../img/nolines_minus.gif");
+}
+.default-tt-node-click-last-close-no {
+    background-image: url("../img/nolines_plus.gif");
+}
+.default-tt-node-click-open-no {
+    background-image: url("../img/nolines_minus.gif");
+}
+.default-tt-node-click-close-no {
+    background-image: url("../img/nolines_plus.gif");
+}
+.default-tt-node-click-last-open-fr {
+    background-image: url("../img/minusbottom.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-last-close-fr {
+    background-image: url("../img/plusbottom.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-open-fr {
+    background-image: url("../img/minus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-close-fr {
+    background-image: url("../img/plus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-last-open-no-fr {
+    background-image: url("../img/nolines_minus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-last-close-no-fr {
+    background-image: url("../img/nolines_plus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-open-no-fr {
+    background-image: url("../img/nolines_minus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-click-close-no-fr {
+    background-image: url("../img/nolines_plus.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-icon {
+    background: none no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-icon-no {
+    background: none no-repeat scroll 0 0 transparent;
+    display: none;
+    float: left;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-icon-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-icon-no-fr {
+    background: none no-repeat scroll 0 0 transparent;
+    display: none;
+    float: right;
+    height: 26px;
+    width: 18px;
+}
+.default-tt-node-icon-leaf {
+    background-image: url("../img/leaf.gif");
+}
+.default-tt-node-icon-folderOpen {
+    background-image: url("../img/folderopen.gif");
+}
+.default-tt-node-icon-folder {
+    background-image: url("../img/folder.gif");
+}
+.default-tt-node-icon-loading {
+    background-image: url("../img/loading.gif");
+}
+.default-tt-node-icon-leaf-fr {
+    background-image: url("../img/leaf.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-icon-folderOpen-fr {
+    background-image: url("../img/folderopen.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-icon-folder-fr {
+    background-image: url("../img/folder.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-icon-loading-fr {
+    background-image: url("../img/loading.gif");
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.default-tt-node-content {
+    float: left;
+}
+.default-tt-node-content-fr {
+    float: right;
+}
+.default-tt-node-click-content {
+    float: left;
+}
+.default-tt-node-click-content-fr {
+    float: right;
+}
+.default-highlight-bg-color-row td {
+    background-color: #e8f2fe;
+}

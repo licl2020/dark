@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datareport.dao.CommonRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.datareport.bean.CommonRole">
+        <id column="ID" property="id" />
+        <result column="LABEL_ID" property="labelId" />
+        <result column="NAME" property="name" />
+        <result column="ROLE" property="role" />
+        <result column="DESCRIPTION" property="description" />
+        <result column="IS_SHOW" property="isShow" />
+        <result column="IS_HANDLER" property="isHandler" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, LABEL_ID, NAME, ROLE, DESCRIPTION, IS_SHOW, IS_HANDLER
+    </sql>
+    
+       <select id="getId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from common_role
+		<where>
+		   <choose>
+		     <when test="_parameter != null and _parameter != '' ">
+		     and ID = #{id,jdbcType=VARCHAR}
+		     </when>
+		     <otherwise></otherwise>
+		   </choose>
+		</where>
+	</select>
+
+</mapper>

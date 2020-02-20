@@ -1,0 +1,48 @@
+.tip{color: #ff0000;}
+.btn-box{margin-bottom:10px;}
+.panel-default>.panel-header{color:#68B7E9;}
+.form-horizontal .form-label{padding-left:0;padding-right:0;min-width: 110px;white-space: nowrap;}
+.formControls{padding-left:0;white-space: nowrap;}
+.upload-url{width:290px;}
+.text-center{text-align: center}
+.investor-item{border-bottom:1px solid #d0d0d0;padding-bottom:10px;}
+.row.btn-box{margin-left:0;padding-left: 15px;}
+.check-box{padding-left:0;}
+.checkbox-group{margin-top: 2px;}
+    .investor-item{
+	position:relative;
+}
+.close-item{
+    position: absolute;
+    color: red;
+    left: 16px;
+    top: 16px;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    z-index: 99999;
+}
+.distpicker .input-text{
+	width:65%;
+}
+    .select-wrapper .select-box {
+	display: inline-block;
+	width: auto;
+}
+.photo-box,.doc-box{padding-top:15px;}
+.display-photo{width:160px;height:90px;}
+.display-doc.icon-word{
+background: url(../../images/word.png) no-repeat;
+    width: 120px;
+    height: 127px;
+    display: block;
+}
+.warning{display:block}
+.close-item {
+    position: absolute;
+    color: #5a98de;
+    left: 20px;
+    top: 18px;}
+.unWrite .select{    background: #f3f3f3;}

@@ -1,0 +1,4 @@
+  <body>$!{data.last()}
+    <img src="./img/timg.jpg" width="300px"/>
+  </body>
+</html>

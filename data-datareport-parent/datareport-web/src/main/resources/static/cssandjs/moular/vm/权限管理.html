@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>网约房信息库</title>
+	<link type="text/css" rel="stylesheet" href="../../../core/theme/global.css" />
+	<link type="text/css" rel="stylesheet" href="../../../core/theme/default/ui.css" />
+</head>
+
+<body>
+	<div class="ui-forms">
+		<div class="ui-forms-bodr">
+			<form id="form">
+				<table class="ui-form">
+					<tbody>
+						<tr class="ui-form-row">
+							<td class="ui-form-label" width="5%">
+								<label>权限名称</label>
+							</td>
+							<td class="ui-form-control" width="20%">
+								<div class="ui-text ui-text-lg">
+									<input type="text" class="ui-text-text" id="perTree" autocomplete="off" placeholder="权限名称" />
+									<input type="hidden" name="readyPer" placeholder="回传的值" id="readyPer" />
+								</div>
+							</td>
+							<td colspan="6" class="ui-form-control">
+								<span class="ui-button ui-button-secondary ui-button-lg" id="btnSearch">
+									<label class="ui-button-text">搜索</label>
+								</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<div class="ui-datagrid-header text-right">
+			<span class="ui-button ui-button-secondary fml-show-btn ui-button-lg" id="btnAdd">
+				<em class="ui-button-text">新增</em>
+			</span>
+			<span class="ui-button ui-button-danger  ui-button-lg" id="btnDel">
+				<em class="ui-button-text">删除</em>
+			</span>
+		</div>
+		<table id="grid"></table>
+	</div>
+	<script type="text/javascript" src="../../../core/js/third/jQuery/jQuery-1.8.3.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/core.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/driver.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/components/jQuery.form.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/components/jQuery.datagrid.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/components/jQuery.dialog.js"></script>
+	<script type="text/javascript" src="../../../core/js/libs/components/jQuery.treeSelecter.js"></script>
+	<script type="text/javascript" src="../js/handle.js"></script>
+</body>
+
+</html>

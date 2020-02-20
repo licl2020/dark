@@ -1,0 +1,41 @@
+/*parent*/
+a:hover{text-decoration: none;}
+.unWrite{background:#f3f3f3;}
+body{background-color:#333744;}
+/* header */
+.navbar-wrapper{height: 50px;overflow: hidden;}
+.navbar .logo{height:50px;line-height:50px;font-size: 20px;}
+.navbar-nav>ul>li, .navbar-nav>ul>li>a{line-height: 50px;}
+.avatar{height:50px;margin-top:7px;min-width: 80px;text-align: center;}
+.avatar img{border-width:2px;border-style: solid;border-color: #dcaf51;margin:0 auto;}
+.dropDown_A{min-width:80px;height: 50px;}
+.Hui-iconfont-power{font-size:20px;}
+#Hui-userbar{right:14px;}
+/*aside*/
+.Hui-aside{background-color: #333744;}
+.Hui-aside .menu_dropdown li a{color: #ffffff;}
+.Hui-aside a,.Hui-aside .menu_dropdown dt{color:#ffffff;font-size: 14px;}
+.Hui-aside .menu_dropdown dt{border: none;padding-left: 35px;height:40px;line-height: 40px;}
+.menu_dropdown.bk_2>dl{background-color: #2b2e36;}
+dd>ul{margin-left:40px;}
+	.menu>li>a {
+    padding: 6px 14px;}
+.Hui-aside .menu_dropdown dt .Hui-iconfont{color: #ffffff;display: inline-block;margin-right: 8px;}
+.Hui-aside .menu_dropdown li.current a, .menu_dropdown li.current a:hover,.Hui-aside .menu_dropdown li a:hover,.menu_dropdown.bk_2>dl.current{background-color: #59b2e7;color: #ffffff;}
+ /*contnt-nav*/
+ .Hui-article-box{top:50px;background-color: #f7f7f7;padding:0 5px;}  
+ .breadcrumb{border:none;background-color: #f7f7f7;}
+ .Hui-iconfont-weizhi{color:#C60B11;display:inline-block;}
+ /*search-box*/
+ .search-box,.content-box{background-color: #ffffff;}
+ .form .legend{border: none;color: #59b2e7;font-size: 16px;margin-left:15px;margin-bottom:0;}
+ .form .row{margin-top:0;padding-top:15px;overflow: hidden;}
+ .advance{color: #59b2e7;}
+ .right-btn{ text-align: right;margin-left: -30px;}
+ .form-label{white-space:nowrap;padding-right:0;}
+ .formControls {padding-left: 0;}
+ .Wdate{width:45%;}
+ /*content-box*/
+ .content-box{margin-top:10px;padding:15px 30px 15px 15px;}
+ /*footer*/
+ footer p{position: absolute;bottom:10px;width:100%;text-align: center;}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datareport.dao.AdminMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.datareport.bean.Admin">
+        <id column="ID" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="card" property="card" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="mail" property="mail" />
+        <result column="tel" property="tel" />
+        <result column="o_id" property="oId" />
+        <result column="r_id" property="rId" />
+        <result column="a_max" property="aMax" />
+        <result column="state" property="state" />
+        <result column="c_name" property="cName" />
+        <result column="password" property="password" />
+        <result column="u_name" property="uName" />
+         <association property="role" column="r_id" select="com.datareport.dao.CommonRoleMapper.getId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, name, sex, card, create_time, update_time, mail, tel, o_id, r_id, a_max, state, c_name, password, u_name
+    </sql>
+
+  
+    <sql id="usersColumn">
+		admin.ID as adminId,admin.name,admin.sex,admin.card,admin.create_time,admin.update_time,admin.mail,admin.tel,admin.o_id,admin.r_id,admin.a_max,admin.state,admin.c_name,admin.password,admin.u_name
+	</sql>
+	<sql id="rolesColumn">
+		common_role.ID as roleId,common_role.LABEL_ID,common_role.NAME as  roleName,common_role.ROLE,common_role.DESCRIPTION,common_role.IS_SHOW,common_role.IS_HANDLER
+	</sql>
+	<sql id="permissionsColumn">
+		common_permssion.ID as permission_id,common_permssion.NAME as permission_name,common_permssion.TYPE,common_permssion.PARENT_ID,common_permssion.PARENT_IDS,common_permssion.VISIT_URL,common_permssion.ICONCLS,common_permssion.PERMISSION,common_permssion.ORDER_NUM,common_permssion.REMARK
+	</sql>
+<!-- 	<sql id="userRoleColumn"> -->
+<!-- 		user_role_id,user_role.user_id,user_role.role_id -->
+<!-- 	</sql> -->
+	<sql id="rolePermissionColumn">
+		common_role_permssion.ID,common_role_permssion.ROLE_ID,common_role_permssion.RESOURCE_ID
+	</sql>
+ 
+<!--         用户基础map，base版本。 -->
+	    <resultMap id="usersBaseMap" type="com.datareport.bean.Admin">
+        <id column="adminId" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="card" property="card" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="mail" property="mail" />
+        <result column="tel" property="tel" />
+        <result column="o_id" property="oId" />
+        <result column="r_id" property="rId" />
+        <result column="a_max" property="aMax" />
+        <result column="state" property="state" />
+        <result column="c_name" property="cName" />
+        <result column="password" property="password" />
+        <result column="u_name" property="uName" />
+    </resultMap>
+	
+<!--         继承基础userMap，oftype：引用的java类型 -->
+	<resultMap type="com.datareport.bean.Admin" id="usersRolesPermissionsMap" extends="usersBaseMap">
+		<collection property="roles" ofType="com.datareport.bean.CommonRole">
+			<id property="id" column="roleId"/>
+			    <result column="LABEL_ID" property="labelId" />
+		        <result column="roleName" property="name" />
+		        <result column="ROLE" property="role" />
+		        <result column="DESCRIPTION" property="description" />
+		        <result column="IS_SHOW" property="isShow" />
+		        <result column="IS_HANDLER" property="isHandler" />
+			<collection property="permssion" ofType="com.datareport.bean.CommonPermssion">
+				<id property="id" column="permission_id"/>
+				<result column="permission_name" property="name" />
+		        <result column="TYPE" property="type" />
+		        <result column="PARENT_ID" property="parentId" />
+		        <result column="PARENT_IDS" property="parentIds" />
+		       		<result column="VISIT_URL" property="visitUrl" />
+		        <result column="ICONCLS" property="iconcls" />
+		        <result column="PERMISSION" property="permission" />
+		        <result column="ORDER_NUM" property="orderNum" />
+		        <result column="REMARK" property="remark" />
+			</collection>
+		</collection>
+	</resultMap>	
+	
+<!--         查询出来的角色和权限列表会自动封装到user对象中 -->
+	<select id="Login" parameterType="java.lang.String" resultMap="usersRolesPermissionsMap">
+		select 
+		<include refid="usersColumn"/>,
+		<include refid="rolesColumn"/>,
+		<include refid="permissionsColumn"/>,
+		<include refid="rolePermissionColumn"/>
+		from admin,common_role,common_permssion,common_role_permssion
+		where
+			 admin.r_id = common_role.ID
+		and  common_role.ID = common_role_permssion.ROLE_ID
+		and  common_permssion.ID = common_role_permssion.RESOURCE_ID
+	    and admin.u_name =#{uName,jdbcType=VARCHAR}
+	</select>
+  
+</mapper>
